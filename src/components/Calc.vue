@@ -33,6 +33,7 @@
 				>
 					{{ el }}
 				</button>
+				<button @click="deleteNumber()">delete</button>
 				<div>
 					<input
 						name="operand"
@@ -69,6 +70,7 @@
 			fibResult: 0,
 			showKeyBoard: false,
 			selectedOperand: "",
+			deleteNum: "<-",
 		}),
 		methods: {
 			calculate(event) {
@@ -139,6 +141,14 @@
 					this.op2 += `${el}`;
 				} else if (this.selectedOperand == "op1") {
 					this.op1 += `${el}`;
+				}
+			},
+			deleteNumber() {
+				if (this.selectedOperand == "op2") {
+					this.op2 = this.op2.slice(0, -1);
+				} else if (this.selectedOperand == "op1") {
+					console.log(this.op1.slice(0, -1));
+					this.op1 = this.op1.slice(0, -1);
 				}
 			},
 		},
