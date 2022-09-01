@@ -95,17 +95,17 @@
 						this.divInt();
 						break;
 				}
-				const { op1, op2, result } = this;
+				// const { op1, op2, result } = this;
 
 				// this.logs = {
 				//   ...this.logs,
 				//   [Date.now()]: `${op1} ${event.target.innerText} ${op2} = ${result}`,
 				// };
-				this.$set(
-					this.logs,
-					Date.now(),
-					`${op1} ${event.target.innerText} ${op2} = ${result}`
-				);
+				// this.$set(
+				// 	this.logs,
+				// 	Date.now(),
+				// 	`${op1} ${event.target.innerText} ${op2} = ${result}`
+				// );
 			},
 			sum() {
 				const { op1, op2 } = this;
@@ -145,21 +145,13 @@
 			},
 			deleteNumber() {
 				if (this.selectedOperand == "op2") {
-					this.op2 = this.op2.slice(0, -1);
+					this.op2 = String(this.op2).slice(0, -1);
 				} else if (this.selectedOperand == "op1") {
-					console.log(this.op1.slice(0, -1));
-					this.op1 = this.op1.slice(0, -1);
+					this.op1 = String(this.op1).slice(0, -1);
 				}
 			},
 		},
-		computed: {
-			fib1() {
-				return this.fib(this.op1);
-			},
-			fib2() {
-				return this.fib(this.op2);
-			},
-		},
+		computed: {},
 	};
 </script>
 
