@@ -62,6 +62,7 @@ export default new Vuex.Store({
     state: {
 		List: [],
         pages: [],
+        activePage: 1,
     },
     getters: { 
         List: (state) => state.List,
@@ -69,6 +70,7 @@ export default new Vuex.Store({
             return prev + +value
         },0),
         pages: (state) => state.pages,
+        activePage: (state) => state.activePage,
     },
     mutations:{
         SET_PAYMENTS_LIST(state, List) {
@@ -79,6 +81,9 @@ export default new Vuex.Store({
         },
         AMOUNT_PAGE(state, page){
             state.pages = page;
+        },
+        ACTIVE_PAGE(state, activePage){
+            state.activePage = activePage;
         }
     },
     actions: {
@@ -86,12 +91,13 @@ export default new Vuex.Store({
             setTimeout(() =>{
                 const initialList = API_DATA.page1;
                 const pagesList = Array (Object.keys(API_DATA).length);
-                commit('AMOUNT_PAGE', pagesList)
-                commit('SET_PAYMENTS_LIST', initialList)
+                commit('AMOUNT_PAGE', pagesList);
+                commit('SET_PAYMENTS_LIST', initialList);
             },1000)
         },
         fetchPageDate({commit}, page) {
             const initialPage = API_DATA[`page${page}`];
+            commit('ACTIVE_PAGE', page)
             commit('SET_PAYMENTS_LIST', initialPage)
         },
     },

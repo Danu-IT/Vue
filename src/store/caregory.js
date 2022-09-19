@@ -9,6 +9,9 @@ export default {
     mutations: {
         SET_CATEGORY_LIST(state, categoryList) {
             state.categoryList = categoryList;
+        },
+        ADD_CATEGORY_ITEM(state, item){
+            state.categoryList.push(item);
         }
     },
     actions: {
