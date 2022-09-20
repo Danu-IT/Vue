@@ -1,4 +1,4 @@
-# lesson
+# pou
 
 ## Project setup
 ```
