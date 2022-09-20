@@ -81,7 +81,7 @@ export default new Vuex.Store({
         },
         AMOUNT_PAGE(state, page){
             state.pages = page;
-        },
+        }, 
         ACTIVE_PAGE(state, activePage){
             state.activePage = activePage;
         }
@@ -97,8 +97,8 @@ export default new Vuex.Store({
         },
         fetchPageDate({commit}, page) {
             const initialPage = API_DATA[`page${page}`];
-            commit('ACTIVE_PAGE', page)
-            commit('SET_PAYMENTS_LIST', initialPage)
+            commit('ACTIVE_PAGE', page);
+            commit('SET_PAYMENTS_LIST', initialPage);
         },
     },
     modules: {

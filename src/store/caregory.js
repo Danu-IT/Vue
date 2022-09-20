@@ -1,5 +1,4 @@
 export default {
-    // namespaced: true,
     state: {
         categoryList: []
     },
@@ -11,7 +10,7 @@ export default {
             state.categoryList = categoryList;
         },
         ADD_CATEGORY_ITEM(state, item){
-            state.categoryList.push(item);
+            item.trim() ? state.categoryList.push(item) : null;
         }
     },
     actions: {
