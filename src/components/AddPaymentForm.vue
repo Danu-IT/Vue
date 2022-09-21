@@ -63,15 +63,20 @@ export default {
 			return `${day}.${month}.${year}`;
 		},
 	},
-	mounted(){
+	created(){
+		console.log('1')
 		if(this.$route.name){
 			this.value = this.$route.query.value;
-			this.addCategory = this.$route.params.pathMatch.split('/')[3];
+			const categoryHistory = this.$route.params.pathMatch.split('/');
+			this.addCategory = categoryHistory[categoryHistory.length - 1];
 
 			if(this.categoryList.indexOf(this.addCategory) == -1) this.ADD_CATEGORY_ITEM(this.addCategory);
 
 			this.category = this.addCategory;
 		}
+	},
+	updated() {
+		console.log('2')
 	},
 };
 </script>

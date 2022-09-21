@@ -59,6 +59,7 @@ export default {
                     value: value,
                 }
             })
+            this.$router.back()
             this.show = true
         }
     },
