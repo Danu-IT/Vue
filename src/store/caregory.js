@@ -10,7 +10,7 @@ export default {
             state.categoryList = categoryList;
         },
         ADD_CATEGORY_ITEM(state, item){
-            item.trim() ? state.categoryList.push(item) : null;
+            if(item) item.trim() ? state.categoryList.push(item) : null;
         }
     },
     actions: {

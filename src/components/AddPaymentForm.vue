@@ -46,6 +46,7 @@ export default {
 				date: date.trim() != "" ? date : currenDate,
 			};
 			this.$emit("add-payment", data);
+			this.category = this.value = this.addCategory = '';
 		},
 		addCategoryList(){
 			this.ADD_CATEGORY_ITEM(this.addCategory);
@@ -61,6 +62,16 @@ export default {
 			const year = currenDate.getFullYear();
 			return `${day}.${month}.${year}`;
 		},
+	},
+	mounted(){
+		if(this.$route.name){
+			this.value = this.$route.query.value;
+			this.addCategory = this.$route.params.pathMatch.split('/')[3];
+
+			if(this.categoryList.indexOf(this.addCategory) == -1) this.ADD_CATEGORY_ITEM(this.addCategory);
+
+			this.category = this.addCategory;
+		}
 	},
 };
 </script>
