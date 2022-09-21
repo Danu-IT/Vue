@@ -1,29 +1,27 @@
 <template>
 	<div id="app">
-		<Calc />
+		<header>
+			<nav class="navbar">
+				<router-link class="router-link" to="/dashboardPage">Dashboard</router-link>
+				<router-link class="router-link" to="/notFound">NotFound</router-link>
+			</nav>
+		</header>
+		<main>
+			<router-view></router-view>
+		</main>
 	</div>
 </template>
 
 <script>
-	import Calc from "@/components/Calc.vue";
 
-	export default {
-		name: "App",
-		components: {
-			Calc,
-		},
-		data: () => ({}),
-		methods: {},
-	};
+export default {
+	name: "App",
+};
 </script>
 
 <style lang="scss">
-	#app {
-		font-family: Avenir, Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
-		color: #2c3e50;
-		margin-top: 60px;
+	.router-link{
+		margin: 0 10px;
+		text-decoration: none;
 	}
 </style>
