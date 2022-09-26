@@ -47,6 +47,7 @@ export default {
 			};
 			this.$emit("add-payment", data);
 			this.category = this.value = this.addCategory = '';
+			this.$modal.hide()
 		},
 		addCategoryList(){
 			this.ADD_CATEGORY_ITEM(this.addCategory);
@@ -64,19 +65,14 @@ export default {
 		},
 	},
 	created(){
-		console.log('1')
 		if(this.$route.name){
 			this.value = this.$route.query.value;
 			const categoryHistory = this.$route.params.pathMatch.split('/');
 			this.addCategory = categoryHistory[categoryHistory.length - 1];
 
 			if(this.categoryList.indexOf(this.addCategory) == -1) this.ADD_CATEGORY_ITEM(this.addCategory);
-
 			this.category = this.addCategory;
 		}
-	},
-	updated() {
-		console.log('2')
 	},
 };
 </script>

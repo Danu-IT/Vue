@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import DashboardPage from '../../pages/DashboardPage.vue'
-import NotFound from '../../pages/NotFound'
 
 Vue.use(VueRouter)
 
@@ -11,21 +9,21 @@ const router = new VueRouter({
         {
             path: '/dashboardPage*',
             name: 'dashboardPage',
-            component: DashboardPage,
+            component: () => import(/*webpackChunkName: "Dashboard"*/'../../pages/DashboardPage.vue'), //Laze load(ленивая загрузка)
         },
         {
             path: '/dashboardPage/add/payment',
             name: 'NewPayment',
-            component: DashboardPage,
+            component: () => import(/*webpackChunkName: "DashboardPage"*/'../../pages/DashboardPage.vue'),
         },
         {
             path: '/notFound',
             name: 'notFound',
-            component: NotFound,
+            component: () => import(/*webpackChunkName: "NotFound"*/'../../pages/NotFound.vue'),
         },
         {
             path: '*',
-            component: NotFound,
+            component: () => import('../../pages/NotFound.vue'),
         }
     ],
 })

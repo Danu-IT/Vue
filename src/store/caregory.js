@@ -18,7 +18,7 @@ export default {
             setTimeout(() => {
                 const categoryList = ['Food', 'Transport', 'Education', 'Sport']
                 commit('SET_CATEGORY_LIST', categoryList)
-            },1500)
+            },500)
         }
     }
 }

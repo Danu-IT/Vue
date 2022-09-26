@@ -2,7 +2,7 @@
 	<div>
 		<div v-for="(item, index) of List" :key="index">
 			<div>
-				<a @click="fetchPageDate(index + 1)" class="paginationItem" :class="{active: index + 1 == activePage ? isActive : false}">{{index + 1}}</a>
+				<a @click="() => pageSwitch(index)" class="paginationItem" :class="{active: index + 1 == activePage ? isActive : false}">{{index + 1}}</a>
 			</div>
 		</div>
 	</div>
@@ -27,6 +27,10 @@
 		},
 		methods: {
 			...mapActions(['fetchPageDate']),
+			pageSwitch(index){
+				this.fetchPageDate(index + 1);
+				this.$contextMenu.hide();
+			}
 		},
     }
 </script>

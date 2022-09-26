@@ -4,11 +4,15 @@
             <div>My personal costs : <span style="color: red">{{totalCost}}</span></div>
         </div>
         <div class="main">
-            <button class="" @click="addForm">ADD NEW COST</button>
-            <div class="links">
+            <!-- <button class="newCost" @click="addForm">ADD NEW COST</button> -->
+            <!-- <div class="links">
                 <div v-for="(item, index) of history" :key="item">
                     <a class="link" @click="() => formReturn(item, index + 1)">{{item}}</a>
                 </div>
+            </div> -->
+            <div class="modalContainer">
+                <button @click="addPaymentForm">Add payment</button>
+                <button @click="addAuth">Auth</button>
             </div>
             <AddPaymentForm :show="show" class="formList" v-if="show" @add-payment="addPayment" :categoryList="categoryList">
             </AddPaymentForm>
@@ -27,13 +31,14 @@ import { mapActions, mapMutations, mapGetters } from "vuex";
 export default {
     name: 'DashboardPage',
     components: {
-        PaymentsDisplay,
-        AddPaymentForm,
-        PaginationComponents,
-    },
+    PaymentsDisplay,
+    AddPaymentForm,
+    PaginationComponents,
+},
     data: () => ({
         show: false,
         history: ['Food', 'Transport', 'Entertainment'],
+        modalSettings: null,
     }),
     computed: {
         ...mapGetters(['List', 'categoryList', 'totalCost', 'pages']),
@@ -48,6 +53,12 @@ export default {
         addForm() {
             return this.show = !this.show
         },
+        addPaymentForm(){
+            this.$modal.show({title: 'Add new payment', content: 'addPaymentForm'})
+        },
+        addAuth(){
+            this.$modal.show({title: 'Authorezathion', content: 'auth'})
+        },
         formReturn(item, index) {
             const value = 200 * index
             this.$router.push({
@@ -61,7 +72,7 @@ export default {
             })
             this.$router.back()
             this.show = true
-        }
+        },
     },
     created() {
         this.fetchCategoryData()
@@ -115,6 +126,9 @@ export default {
     color: green;
     margin-right: 10px;
     cursor: pointer;
+}
+.modalContainer{
+    margin-top: 20px;
 }
 </style>
     

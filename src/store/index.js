@@ -79,11 +79,17 @@ export default new Vuex.Store({
         ADD_PAYMENT(state, payment) {
             state.List.push(payment);
         },
+        REMOVE_PAYMENT(state, paymentIndex){
+            state.List.splice(paymentIndex, 1)
+        },
         AMOUNT_PAGE(state, page){
             state.pages = page;
         }, 
         ACTIVE_PAGE(state, activePage){
             state.activePage = activePage;
+        },
+        REMOTE_PAYMENT(state, remotedPayment){
+            console.log(Vue.set(state.List, remotedPayment[1].index, remotedPayment[0]));
         }
     },
     actions: {
