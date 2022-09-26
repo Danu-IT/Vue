@@ -26,7 +26,7 @@ export default {
             type: Object
         }
     },
-    methods: {
+    methods: { 
         ...mapMutations(['REMOVE_PAYMENT']),
         dataArr() {
             this.REMOVE_PAYMENT(this.settings.index);
