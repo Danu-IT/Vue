@@ -3,8 +3,8 @@
 
         <div :style=" {position:'absolute',top: this.top + 'px', left: this.left + 'px'}">
             <div :class="$style.content">
-                <div @click="editing">Редактировать</div>
-                <div @click="() => dataArr()">Удалить</div>
+                <div @click="editing">Rename</div>
+                <div @click="() => dataArr()">Remove</div>
                 <footer :class="$style.footer">
                     <a :class="$style.closeBtn" @click.prevent="closeModal" href="">X</a>
                 </footer>
