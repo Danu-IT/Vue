@@ -2,8 +2,8 @@
 	<div class="view">
 		<h1>Calculator</h1>
 		<div class="main">
-			<input type="number" v-model.number="op1" />
-			<input type="number" v-model.number="op2" />
+			<input name="op1" type="number" v-model.number="op1" />
+			<input name="op2" type="number" v-model.number="op2" />
 			= {{ result }}
 		</div>
 		<div v-if="error" class="error">{{ error }}</div>
@@ -14,8 +14,9 @@
 		</div>
 		<div class="keyboard">
 			<button
-				@click="calculate($event)"
+				@click="calculate(el)"
 				v-for="(el, index) in operation"
+				:name="el"
 				:key="index"
 			>
 				{{ el }}
@@ -66,16 +67,15 @@
 			error: "",
 			operation: ["+", "-", "*", "/", "**", "//"],
 			simvol: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-			// logs: {},
 			fibResult: 0,
 			showKeyBoard: false,
 			selectedOperand: "",
 			deleteNum: "<-",
 		}),
 		methods: {
-			calculate(event) {
+			calculate(el) {
 				this.error = "";
-				switch (event.target.innerText) {
+				switch (el) {
 					case "+":
 						this.sum();
 						break;
@@ -110,7 +110,6 @@
 			sum() {
 				const { op1, op2 } = this;
 				this.result = +op1 + +op2;
-				// this.fibResult = this.fib(op1) + this.fib(op2);
 			},
 			sub() {
 				const { op1, op2 } = this;
