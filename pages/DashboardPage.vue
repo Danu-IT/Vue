@@ -178,7 +178,6 @@ export default {
     },
     updated() {
         this.chartData.labels = this.activeStore()
-        console.log(this.chartData.datasets[0].data)
         this.chartData.datasets[0].data = this.precent()
     },
 }
