@@ -89,8 +89,8 @@ export default new Vuex.Store({
             state.activePage = activePage;
         },
         REMOTE_PAYMENT(state, remotedPayment){
-            console.log(Vue.set(state.List, remotedPayment[1].index, remotedPayment[0]));
-        }
+            Vue.set(state.List, remotedPayment[1].index, remotedPayment[0]);
+        },
     },
     actions: {
         fetchData ({commit}){

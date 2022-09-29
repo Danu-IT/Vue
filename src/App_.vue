@@ -1,20 +1,15 @@
 <template>
-	<v-app>
-		<v-app-bar app color="primary" dark>
-			<div class="d-flex align-center">
-				<v-btn :ripple="false" plain to="/dashboardPage">Dashboard</v-btn>
-				<v-btn :ripple="false" plain to="/notFound">Not Found</v-btn>
-			</div>
-		</v-app-bar>
-
-		<v-main>
-			<router-view />
-			<ContextMenu :settings="showContextSetting" v-if="showContextMenu"></ContextMenu>
-		</v-main>
-		<transition name="fade">
-			<ModalWindowApp :settings="modalSettings" v-if="showModal"></ModalWindowApp>
-		</transition>
-	</v-app>
+	<div id="app">
+		<header>
+			<nav class="navbar">
+				<router-link class="router-link" to="/dashboardPage">Dashboard</router-link>
+				<router-link class="router-link" to="/notFound">NotFound</router-link>
+			</nav>
+		</header>
+		<main>
+			<router-view></router-view>
+		</main>
+	</div>
 </template>
 
 <script>
@@ -55,3 +50,20 @@ export default {
 	}
 };
 </script>
+
+<style lang="scss">
+.router-link {
+	margin: 0 10px;
+	text-decoration: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
+}
+</style>

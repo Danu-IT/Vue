@@ -45,10 +45,10 @@ export default {
             return this.settings?.title || 'Modal window'
         },
         left() {
-            return this.settings?.coordinateX - 120;
+            return this.settings?.coordinateX - 70;
         },
         top() {
-            return this.settings?.coordinateY - 100;
+            return this.settings?.coordinateY - 540;
         }
     },
 }

@@ -1,7 +1,6 @@
 <template>
-	<div class="input__container">
+	<!-- <div class="input__container">
 		<input type="text" placeholder="Value" v-model="value" />
-		<!-- <input type="text" placeholder="Category" v-model="category" /> -->
 		<div class="category__container">
 			<select class="category" v-model="category" name="" id="">
 				<option disabled value="">Выбрать категорию</option>
@@ -10,12 +9,25 @@
 			<button @click="showCategory = !showCategory">Add category</button>
 		</div>
 		<div class="category__Add" v-if="showCategory">
-			<input v-model="addCategory" placeholder="Category" type="text"/>
+			<input v-model="addCategory" placeholder="Category" type="text" />
 			<button @click="addCategoryList">Add category</button>
 		</div>
 		<input type="text" placeholder="Date" v-model="date" />
 		<button @click="addPayment">Add</button>
-	</div>
+	</div> -->
+
+	<v-card class="text-left pa-8">
+		<v-text-field label="Date" v-model="date"/>
+		<v-select label="Category" v-model="category" :items="categoryList"></v-select>
+		<v-btn :ripple="false" @click="showCategory = !showCategory">Add category</v-btn>
+		<v-col v-if="showCategory">
+			<v-text-field label="New category" v-model="addCategory"/>
+			<v-btn :ripple="false" @click="addCategoryList">Add category</v-btn>
+		</v-col>
+		<v-text-field label="Value" v-model="value"/>
+		<v-btn :ripple="false" @click="addPayment">Add payment</v-btn>
+	</v-card>
+
 </template>
 
 <script>
@@ -49,7 +61,7 @@ export default {
 			this.category = this.value = this.addCategory = '';
 			this.$modal.hide()
 		},
-		addCategoryList(){
+		addCategoryList() {
 			this.ADD_CATEGORY_ITEM(this.addCategory);
 			this.addCategory = '';
 			this.showCategory = false;
@@ -64,13 +76,13 @@ export default {
 			return `${day}.${month}.${year}`;
 		},
 	},
-	created(){
-		if(this.$route.name){
+	created() {
+		if (this.$route.name) {
 			this.value = this.$route.query.value;
 			const categoryHistory = this.$route.params.pathMatch.split('/');
 			this.addCategory = categoryHistory[categoryHistory.length - 1];
 
-			if(this.categoryList.indexOf(this.addCategory) == -1) this.ADD_CATEGORY_ITEM(this.addCategory);
+			if (this.categoryList.indexOf(this.addCategory) == -1) this.ADD_CATEGORY_ITEM(this.addCategory);
 			this.category = this.addCategory;
 		}
 	},
@@ -114,12 +126,14 @@ export default {
 .category {
 	margin: 15px 0;
 }
-.category__container{
+
+.category__container {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
-.category__Add{
+
+.category__Add {
 	display: flex;
 	flex-direction: column;
 	padding: 20px 0px;

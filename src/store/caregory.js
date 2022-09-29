@@ -11,7 +11,7 @@ export default {
         },
         ADD_CATEGORY_ITEM(state, item){
             if(item) item.trim() ? state.categoryList.push(item) : null;
-        }
+        },
     },
     actions: {
         fetchCategoryData ({commit}){
